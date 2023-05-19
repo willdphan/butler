@@ -11,10 +11,10 @@ const Home: FC = () => {
 		<div className="flex flex-col items-center  bg-white w-full min-h-screen ">
 	<div className='max-h-[55vh] flex flex-col pl-10 lg:pl-0 lg:flex-row pt-28 w-full justify-center ' >
 		
-			<h3 className='hidden lg:block text-black uppercase font-Mono  xl:mr-44 pt-2 text-lg'>William Phan</h3>
+			<h3 className='hidden lg:block text-black uppercase font-Mono xl:mr-36 pt-2 text-lg'>William Phan</h3>
 			<div>
-				<h1 className='mb-64 mt-28 ml-5 lg:mt-0 lg:pl-10 justify-center text-3xl lg:text-5xl text-gray-300 bg-blue font-Mono  uppercase max-w-[22em] lg:max-w-[17em] mr-24 leading-10 font-normal' style={{ lineHeight: '3.8rem' }}> 
-				Choose the most suitable blockchain for your needs. Just connect wallet for creation.<a className='text-black hover:bg-black hover:text-white transition-all'><a className='sm:hidden'><br /></a> Enter Here.</a> </h1>
+				<h1 className='mb-64 mt-28 ml-5 lg:mt-0 lg:pl-10 justify-center text-3xl lg:text-5xl text-gray-300 bg-blue font-Mono  uppercase max-w-[22em] lg:max-w-[17em] mr-5 leading-relaxed sm:leading-loose font-normal transition-all' > 
+				Choose the most suitable blockchain for your needs. Just connect wallet for creation.<a className='text-black hover:bg-black hover:text-white '><a className='sm:hidden'><br /></a> Enter Here.</a> </h1>
 				{/* <div className='space-x-10'>
 				<input className="mb-64 mt-10 bg-gray-200 py-5 pl-4 pr-28 placeholder:font-IBM" type="text" placeholder="ENTER ADDRESS..." />
 				<button className='bg-black py-4 px-10 text-lg uppercase'>
