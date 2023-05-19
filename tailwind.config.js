@@ -8,6 +8,7 @@ module.exports = {
 				Space: ['Space Grotesk', 'sans-serif'],
 				Sans: ['DM Sans', 'sans-serif'],
 				IBM: ['IBM Plex Mono', 'sans-serif'],
+				Mono: ['Space Mono', 'sans-serif'],
 			}, 
 		},
 	},
