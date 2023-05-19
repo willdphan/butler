@@ -7,7 +7,8 @@ module.exports = {
 			fontFamily: {
 				Space: ['Space Grotesk', 'sans-serif'],
 				Sans: ['DM Sans', 'sans-serif'],
-			},
+				IBM: ['IBM Plex Mono', 'sans-serif'],
+			}, 
 		},
 	},
 	plugins: [],
