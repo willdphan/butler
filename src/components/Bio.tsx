@@ -1,9 +1,5 @@
 import React from 'react'
 import Menu from 'src/components/Menu'
-import Profile from 'src/components/Profile'
-import Learnings from 'src/components/Learnings'
-import Projects from '@/components/Experiments'
-import Crafts from 'src/components/Crafts'
 import Link from 'next/link'
 
 const Bio = () => {
