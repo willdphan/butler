@@ -23,7 +23,7 @@ const Search = () => {
 
         <div className="flex flex-col justify-end lg:flex lg:flex-row w-full max-w-screen-2xl min-h-screen  lg:relative">
       
-            <div className="flex flex-col items-center justify-start lg:w-1/2 inset-0 lg:fixed">
+            <div className="flex flex-col items-center justify-start lg:w-1/2 inset-0 lg:fixed lg:pt-14">
                 <Link href={'/'}>
             <svg className='absolute left-5 top-5' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"></path></svg></Link>
             <div className=' flex items-center justify-center my-10'> <Image src={Coin} width={200} height={200} alt={''}/></div>
