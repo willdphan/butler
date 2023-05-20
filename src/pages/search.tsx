@@ -10,14 +10,48 @@ const Search = () => {
 
 	const [address, setAddress] = useState('')
 
-	const handleInputChange = e => {
-		setAddress(e.target.value)
+	// Function to convert Ethereum address to the desired format
+	function convertAddressFormat(address) {
+		// Check if the input address is valid
+		if (!address || typeof address !== 'string' || address.length < 2) {
+			return ''
+		}
+
+		// Extract the first five and last four characters of the address
+		const prefix = address.substring(0, 5).toUpperCase()
+		const suffix = address.substring(address.length - 4).toUpperCase()
+
+		// Combine the formatted prefix, ellipsis, and suffix
+		const formattedAddress = `${prefix}...${suffix}`
+
+		return formattedAddress
 	}
 
-	const fetchNfts = async () => {
+	const [ethToUsd, setEthToUsd] = useState(null)
+
+	const fetchEthToUsd = async () => {
+		try {
+			const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd')
+			const data = await response.json()
+			setEthToUsd(data.ethereum.usd)
+		} catch (error) {
+			console.error(error)
+		}
+	}
+
+	useEffect(() => {
+		fetchEthToUsd()
+	}, [])
+
+	const handleInputChange = e => {
+		setAddress(e.target.value)
+		fetchNfts(e.target.value)
+	}
+
+	const fetchNfts = async address => {
 		try {
 			// fetch
-			const res = await fetch('/api/nftsAxios')
+			const res = await fetch(`/api/nftsAxios?address=${address}`)
 			// turn json to reponse
 			const data = await res.json()
 			// set the new data
@@ -28,9 +62,24 @@ const Search = () => {
 		}
 	}
 
-	useEffect(() => {
-		fetchNfts()
-	}, [])
+	function sumFloorPrices(response) {
+		let total = 0
+
+		// Iterate through the objects in the response
+		for (const obj of response) {
+			// Retrieve the first object in the floor_prices array
+			const floorPrice =
+				obj.collection.floor_prices[1] || obj.collection.floor_prices[2] || obj.collection.floor_prices[0]
+
+			if (floorPrice) {
+				// Add the value to the total
+				total += floorPrice.value
+			}
+		}
+		console.log(total)
+		// Return the total
+		return total
+	}
 
 	return (
 		<div className="flex  items-start justify-center min-h-screen bg-white ">
@@ -52,26 +101,33 @@ const Search = () => {
 						<Image src={Coin} width={200} height={200} alt={''} />
 					</div>
 					<input
-						className="rounded-tr-3xl py-12 w-full max-w-[24em] sm:max-w-[30em] placeholder:text-black placeholder:text-center placeholder:font-Mono"
+						className="rounded-tr-3xl py-12 w-full max-w-[24em] sm:max-w-[30em] text-black text-center placeholder:text-black placeholder:text-center placeholder:font-Mono"
 						placeholder="..TYPE ADDRESS OR NAME.."
 						type="text"
 						value={address}
+						onChange={handleInputChange} // Add this line
 						style={{ backgroundColor: '#A9BCBF' }}
 					/>
 
 					<div className="mt-1 rounded-bl-3xl mb-10 py-12 w-full max-w-[24em] sm:max-w-[30em] text-black text-center font-Mono bg-white  uppercase flex  flex-row justify-start space-x-14 relative">
 						<div className="text-gray-400 absolute top-9 left-10">ETH Balance</div>
 
-						<div className="flex items-end justify-end absolute top-9 right-10">12.34 Ξ</div>
+						<div className="flex items-end justify-end absolute top-9 right-10">
+							{(sumFloorPrices(nfts) * 0.000000000000000001).toFixed(3)} Ξ
+						</div>
 					</div>
 
 					<div className="py-6 mt-14 w-full max-w-[30em] text-black text-center font-Mono uppercase flex  flex-row justify-center relative">
 						<div className="text-gray-400 absolute left-10 top-9">ETH TO USD</div>
-						<div className="absolute right-10 top-9">12.34 Ξ</div>
+						<div className="flex items-end justify-end absolute top-9 right-10">
+							{ethToUsd !== null
+								? `${(sumFloorPrices(nfts) * 0.000000000000000001 * ethToUsd).toFixed(2)} USD`
+								: 'Loading...'}
+						</div>
 					</div>
 					<div className="mb-10 w-full max-w-[30em] text-black text-center font-Mono uppercase flex  flex-row justify-center relative">
 						<div className="text-gray-400 flex absolute left-10 top-9">Wallet</div>
-						<div className="absolute right-10 top-9">0x5d4...319a</div>
+						<div className="absolute right-10 top-9">{convertAddressFormat(address)}</div>
 					</div>
 					<div className="flex items-center justify-center lg:hidden mt-20 pb-10">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
@@ -90,7 +146,11 @@ const Search = () => {
 								value={
 									nft.collection.floor_prices.length > 1
 										? nft.collection.floor_prices[1].value * 0.000000000000000001
-										: ''
+										: 0
+										? nft.collection.floor_prices[2].value * 0.000000000000000001
+										: 0
+										? nft.collection.floor_prices[0].value * 0.000000000000000001
+										: 0
 								}
 								last={
 									nft.last_sale && nft.last_sale.total_price

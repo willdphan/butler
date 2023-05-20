@@ -13,7 +13,7 @@ const NftCard = ({ title, id, image, value, last }) => {
 	return (
 		<section id="learnings" className="w-full px-1 flex">
 			<div className="columns-1 my-2 w-full flex items-center justify-center">
-				<div className="w-full max-w-[24em] sm:max-w-[30em] bg-white transform transition duration-300 sm:hover:scale-[1.01] sm:hover:bg-[#F8F8F8] text-[#9B9B9B] hover:text-white mb-2 font-Mono uppercase text-lg py-5">
+				<div className="w-full max-w-[24em] sm:max-w-[30em] bg-white transform transition duration-300 sm:hover:scale-[1.01] sm:hover:bg-[#F8F8F8] text-[#9B9B9B]  mb-2 font-Mono uppercase text-lg py-5">
 					<motion.div
 						exit={{ opacity: 0 }}
 						initial={{ opacity: 0 }}

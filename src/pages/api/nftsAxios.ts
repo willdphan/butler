@@ -3,11 +3,10 @@
 import axios from 'axios'
 
 const chains = 'ethereum'
-const wallet_addresses = '0x54DCd05271B4DF974dEd75970b903A13BbEb319a'
 
-const url = `https://api.simplehash.com/api/v0/nfts/owners?chains=${chains}&wallet_addresses=${wallet_addresses}`
+const getRequest = async wallet_addresses => {
+	const url = `https://api.simplehash.com/api/v0/nfts/owners?chains=${chains}&wallet_addresses=${wallet_addresses}`
 
-const getRequest = async () => {
 	// use get request with url and api key
 	const response = await axios.get(url, {
 		//  "headers" refers to the additional information that is sent along with the request or response.
@@ -23,10 +22,12 @@ const getRequest = async () => {
 	// return the response
 	return data
 }
-
 // responsible for using the getRequest() function to fetch data and send it back as a JSON response
 export default async function handler(req, res) {
-	const result = await getRequest()
+	// get the address from the request query
+	const { address } = req.query
+
+	const result = await getRequest(address)
 	console.log(result)
 	//  res.status(200) sets the HTTP response status code to 200, which indicates a successful response
 	// .json(result.nfts) serializes the result.nfts data as JSON and sends it as the response body.
