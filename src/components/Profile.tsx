@@ -2,7 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import profile from 'public/images/profile.jpeg'
-import test1 from 'public/images/wallpaper.jpg'
 import { useState } from 'react'
 import personal from 'public/images/personal.png'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Menu from 'src/components/Menu'
 import Link from 'next/link'
-import NftList from './NftList'
+import NftList from './NftCard'
 import Profile from './Profile'
 
 const Bio = () => {
