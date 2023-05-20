@@ -3,6 +3,8 @@ import Link from 'next/link'
 import NftCard from 'src/components/NftCard'
 import Image from 'next/image'
 import Coin from 'public/coin.gif'
+import { motion } from 'framer-motion'
+import LoadingNFTS from 'src/components/LoadingNfts'
 
 const Search = () => {
 	// we get array of objects
@@ -127,7 +129,9 @@ const Search = () => {
 					</div>
 					<div className="mb-10 w-full max-w-[30em] text-black text-center font-Mono uppercase flex  flex-row justify-center relative">
 						<div className="text-gray-400 flex absolute left-10 top-9">Wallet</div>
-						<div className="absolute right-10 top-9">{convertAddressFormat(address)}</div>
+						<div className="absolute right-10 top-9">
+							{address ? convertAddressFormat(address) : '0x000...0000'}
+						</div>
 					</div>
 					<div className="flex items-center justify-center lg:hidden mt-20 pb-10">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
@@ -137,29 +141,40 @@ const Search = () => {
 				</div>
 
 				<div className="w-full lg:w-1/2 flex flex-col pt-20 bg-white">
-					{nfts.map(nft => (
-						<div key={nft.nft_id}>
-							<NftCard
-								image={nft.image_url}
-								title={nft.name}
-								id={nft.token_id}
-								value={
-									nft.collection.floor_prices.length > 1
-										? nft.collection.floor_prices[1].value * 0.000000000000000001
-										: 0
-										? nft.collection.floor_prices[2].value * 0.000000000000000001
-										: 0
-										? nft.collection.floor_prices[0].value * 0.000000000000000001
-										: 0
-								}
-								last={
-									nft.last_sale && nft.last_sale.total_price
-										? nft.last_sale.total_price * 0.000000000000000001
-										: ''
-								}
-							/>
+					{nfts.length > 0 ? (
+						nfts.map(nft => (
+							<div key={nft.nft_id}>
+								<NftCard
+									image={nft.image_url}
+									title={nft.name}
+									id={nft.token_id}
+									value={
+										nft.collection.floor_prices.length > 1
+											? nft.collection.floor_prices[1].value * 0.000000000000000001
+											: nft.collection.floor_prices.length > 2
+											? nft.collection.floor_prices[2].value * 0.000000000000000001
+											: nft.collection.floor_prices.length > 0
+											? nft.collection.floor_prices[0].value * 0.000000000000000001
+											: 0
+									}
+									last={
+										nft.last_sale && nft.last_sale.total_price
+											? nft.last_sale.total_price * 0.000000000000000001
+											: ''
+									}
+								/>
+							</div>
+						))
+					) : (
+						<div className="space-y-2">
+							<LoadingNFTS />
+							<LoadingNFTS />
+							<LoadingNFTS />
+							<LoadingNFTS />
+							<LoadingNFTS />
+							<LoadingNFTS />
 						</div>
-					))}
+					)}
 				</div>
 			</div>
 		</div>
