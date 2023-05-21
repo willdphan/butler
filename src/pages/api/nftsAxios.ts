@@ -20,6 +20,7 @@ const getRequest = async wallet_addresses => {
 	// wait for the response
 	const data = await response.data
 	// return the response
+	console.log(data)
 	return data
 }
 // responsible for using the getRequest() function to fetch data and send it back as a JSON response

@@ -14,7 +14,7 @@ const Home: FC = () => {
 						className="mb-64 mt-28 mx-5 lg:mt-0  pl-6 lg:pl-10 justify-center text-2xl md:text-4xl lg:text-[2.8rem] text-gray-400 bg-blue font-Mono uppercase max-w-[22em] lg:max-w-[17em] mr-5  transition-all"
 						style={{ lineHeight: '1.3' }}
 					>
-						Choose the most suitable blockchain for your needs. Just connect wallet for creation.Enter Here.
+						Uncover your NFT assets and their stories. Type in your wallet. Start exploring now.
 					</h1>
 				</div>
 			</div>
