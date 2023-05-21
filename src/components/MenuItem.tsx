@@ -27,7 +27,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ title, image, subtitle, link }) => 
 				<Link href={link}>{image}</Link>
 			</div>
 
-			<div className="pl-10  bg-gray-200 text-lg h-[10%] flex lg:pl-10 group-hover:bg-black group-hover:text-white flex justify-start items-center py-1 mx-1 mb-1 transition-all">
+			<div className="hidden lg:block  bg-gray-200 text-lg h-[10%] flex lg:pl-10 group-hover:bg-black group-hover:text-white flex justify-start items-center py-1 mx-1 mb-1 transition-all">
 				{subtitle}
 			</div>
 		</div>
