@@ -14,7 +14,7 @@ const App = ({ Component, pageProps }) => {
 				{/* FAVICON */}
 				<Head>
 					{/* LINK TITLE */}
-					<title>William Phan</title>
+					<title>DEGEN</title>
 					<link rel="shortcut icon" className="rounded-full" href="/images/favico.ico" />
 				</Head>
 

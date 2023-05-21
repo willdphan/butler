@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Coin from 'public/coin.gif'
 import { useState } from 'react'
 import { convertAddressFormat } from 'src/pages/search'
+import { motion } from 'framer-motion'
 
 const NFTModal = ({ nft, onClose }) => {
 	const [address, setAddress] = useState('')
@@ -20,7 +21,13 @@ const NFTModal = ({ nft, onClose }) => {
 	// Description?
 
 	return (
-		<div className="pt-5 bg-[#F8F8F8] flex flex-col items-center justify-start w-full fixed lg:w-1/2 inset-0 lg:fixed lg:pt-10">
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 0.25 }}
+			className="pt-5 bg-[#F8F8F8] flex flex-col items-center justify-start w-full fixed lg:w-1/2 inset-0 lg:fixed lg:pt-10"
+		>
 			<svg
 				onClick={onClose}
 				className="absolute left-5 top-5"
@@ -79,7 +86,7 @@ const NFTModal = ({ nft, onClose }) => {
 				<div className="text-gray-400 flex absolute left-10 top-9">Chain</div>
 				<div className="absolute right-10 top-9">{nft.chain}</div>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

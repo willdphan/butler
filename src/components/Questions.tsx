@@ -45,7 +45,7 @@ const Questions = () => {
 						Simply paste in a wallet address into the input field to view wallet NFTs.
 					</p>
 					<h1 className="text-black uppercase ">Need a sample?</h1>
-					<p className="text-gray-400 ">HERE, TRY THIS: 0x54DCd05271B4DF974dEd75970b903A13BbEb319a</p>
+					<p className="text-gray-400 ">HERE, TRY THIS: 0x46f412D41512e065D3D2457135f90BF9f7Ed2836</p>
 				</div>
 				<div data-popper-arrow></div>
 			</div>

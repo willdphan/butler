@@ -84,7 +84,7 @@ const Search = () => {
 		for (const obj of response) {
 			// Retrieve the first object in the floor_prices array
 			const floorPrice =
-				obj.collection.floor_prices[1] || obj.collection.floor_prices[2] || obj.collection.floor_prices[0]
+				obj.collection.floor_prices[0] || obj.collection.floor_prices[2] || obj.collection.floor_prices[1]
 
 			if (floorPrice) {
 				// Add the value to the total
@@ -99,7 +99,13 @@ const Search = () => {
 	return (
 		<div className="flex  items-start justify-center min-h-screen bg-white ">
 			<div className="flex flex-col justify-end lg:flex lg:flex-row w-full max-w-screen-2xl min-h-screen  lg:relative">
-				<div className="relative bg-[#F8F8F8]  flex flex-col items-center justify-start lg:w-1/2 inset-0 lg:fixed lg:pt-14">
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{ duration: 0.5 }}
+					className="relative bg-[#F8F8F8]  flex flex-col items-center justify-start lg:w-1/2 inset-0 lg:fixed lg:pt-14"
+				>
 					<Link href={'/'}>
 						<svg
 							className="absolute left-5 top-5"
@@ -125,7 +131,7 @@ const Search = () => {
 					/>
 
 					<div className="mt-1 rounded-bl-3xl mb-5 py-12 w-full max-w-[24em] sm:max-w-[30em] text-black text-center font-Mono bg-white  uppercase flex  flex-row justify-start space-x-14 relative">
-						<div className="text-gray-400 absolute top-9 left-10">ETH Balance</div>
+						<div className="text-gray-400 absolute top-9 left-10">Portfolio Value</div>
 
 						<div className="flex items-end justify-end absolute top-9 right-10">
 							{(sumFloorPrices(nfts) * 0.000000000000000001).toFixed(3)} Ξ
@@ -154,7 +160,7 @@ const Search = () => {
 							<path d="M11.9997 13.1714L16.9495 8.22168L18.3637 9.63589L11.9997 15.9999L5.63574 9.63589L7.04996 8.22168L11.9997 13.1714Z"></path>
 						</svg>
 					</div>
-				</div>
+				</motion.div>
 				<div className="w-full lg:w-1/2 flex flex-col pt-20 bg-white">
 					{nfts.length > 0 ? (
 						nfts.map(nft => (
@@ -165,11 +171,11 @@ const Search = () => {
 									id={nft.token_id}
 									value={
 										nft.collection.floor_prices.length > 1
-											? nft.collection.floor_prices[1].value * 0.000000000000000001
-											: nft.collection.floor_prices.length > 2
-											? nft.collection.floor_prices[2].value * 0.000000000000000001
-											: nft.collection.floor_prices.length > 0
 											? nft.collection.floor_prices[0].value * 0.000000000000000001
+											: 0
+											? nft.collection.floor_prices[2].value * 0.000000000000000001
+											: 0
+											? nft.collection.floor_prices[1].value * 0.000000000000000001
 											: 0
 									}
 									last={
@@ -199,55 +205,3 @@ const Search = () => {
 }
 
 export default Search
-
-{
-	/* QUESTION MARK SNIPPET */
-}
-//     <p className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-//     Need Help
-//     <button
-//         onMouseOver={() => {
-//             document.getElementById('popover-description').style.display = 'block'
-//         }}
-//         onMouseOut={() => {
-//             document.getElementById('popover-description').style.display = 'none'
-//         }}
-//         type="button"
-//     >
-//         <svg
-//             className="w-4 h-4 ml-1 text-gray-400 hover:text-gray-500"
-//             aria-hidden="true"
-//             fill="currentColor"
-//             viewBox="0 0 20 20"
-//             xmlns="http://www.w3.org/2000/svg"
-//         >
-//             <path
-//                 fill-rule="evenodd"
-//                 d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-//                 clip-rule="evenodd"
-//             ></path>
-//         </svg>
-//         <span className="sr-only">Show information</span>
-//     </button>
-// </p>
-// <div
-//     id="popover-description"
-//     role="tooltip"
-//     className="absolute bottom-20 z-10 inline-block text-sm transition-opacity bg-white border border-gray-200 rounded-lg shadow-sm w-full max-w-[30em] "
-//     style={{ display: 'none' }}
-// >
-//     <div
-//         onMouseOver={() => {
-//             document.getElementById('popover-description').style.display = 'block'
-//         }}
-//         className="p-3 space-y-2 font-Mono uppercase"
-//     >
-//         <h1 className="text-black">How does it work?</h1>
-//         <p className="text-gray-400 mb-5">
-//             Simply paste in a wallet address into the input field to view wallet NFTs.
-//         </p>
-//         <h1 className="text-black">Need a sample?</h1>
-//         <p className="text-gray-400">Here, try this: 0x54DCd05271B4DF974dEd75970b903A13BbEb319a</p>
-//     </div>
-//     <div data-popper-arrow></div>
-// </div>
