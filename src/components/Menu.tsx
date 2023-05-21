@@ -5,7 +5,7 @@ const Menu = () => {
 		<div className="flex flex-col justify-center lg:flex-row w-full lg:min-h-[45vh] text-black text-4xl font-Mono uppercase  max-w-screen-2xl	">
 			<div className="flex flex-row min-h-[22.5vh] w-full ">
 				<MenuItem
-					link="https://twitter.com/willdphan"
+					link="https://simplehash.com/"
 					title="API"
 					subtitle="Simple Hash"
 					image={
@@ -18,7 +18,7 @@ const Menu = () => {
 					}
 				/>
 				<MenuItem
-					link="https://twitter.com/willdphan"
+					link="https://github.com/willdphan/degen"
 					title="Code"
 					subtitle="Github"
 					image={
@@ -46,7 +46,7 @@ const Menu = () => {
 					}
 				/>
 				<MenuItem
-					link="https://twitter.com/willdphan"
+					link="mailto:willdphan@gmail.com"
 					title="HMU"
 					subtitle="Mail"
 					image={
