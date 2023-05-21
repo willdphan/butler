@@ -20,7 +20,7 @@ const NFTModal = ({ nft, onClose }) => {
 	// Description?
 
 	return (
-		<div className="pt-5 bg-[#F8F8F8] flex flex-col items-center justify-start w-full fixed lg:w-1/2 inset-0 lg:fixed lg:pt-14">
+		<div className="pt-5 bg-[#F8F8F8] flex flex-col items-center justify-start w-full fixed lg:w-1/2 inset-0 lg:fixed lg:pt-10">
 			<svg
 				onClick={onClose}
 				className="absolute left-5 top-5"
@@ -84,7 +84,3 @@ const NFTModal = ({ nft, onClose }) => {
 }
 
 export default NFTModal
-
-{
-	/* <Link href={nft.external_url}> */
-}

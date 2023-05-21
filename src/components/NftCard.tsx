@@ -21,12 +21,12 @@ const NftCard = ({ title, id, image, value, last }) => {
 						transition={{ duration: 0.5 }}
 						className="pl-10 space-y-2 flex space-x-10 uppercase ease-in-out"
 					>
-						<img width={70} height={70} src={image} alt="" />
+						<Image width={70} height={70} src={image} alt="" />
 						<div className="flex flex-col">
 							<h1 className="text-black text-wrap max-w-[10em] sm:max-w-full ">{title}</h1>
 							<div className="hidden sm:block sm:inline-flex space-x-3 ">
 								<p className="text-gray-400">ID:{formatText(id)}</p>
-								{value && <p className="text-gray-400">| FL:{Number(value).toFixed(3)}Ξ</p>}
+								{value && <p className="text-gray-400">| FP:{Number(value).toFixed(3)}Ξ</p>}
 								{last && <p className="text-gray-400">| LS:{Number(last).toFixed(3)}Ξ</p>}
 							</div>
 						</div>
