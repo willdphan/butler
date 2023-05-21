@@ -138,7 +138,7 @@ const Search = () => {
 						</div>
 					</div>
 					{/* QUESTIONS? */}
-					<Questions />
+					{/* <Questions /> */}
 
 					{/* SECOND HALF OF DATA */}
 					<div className="py-6 mt-14 w-full max-w-[30em] text-black text-center font-Mono uppercase flex  flex-row justify-center relative">
