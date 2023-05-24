@@ -1,10 +1,8 @@
-# Degen
+# BW Scale AI Homepage
 
-View any portfolio. Just copy and paste any wallet address into the input field.
+Scale AI's homepage if it's theme was black and white.
 
-Uses the [Simple Hash API](https://simplehash.com/)
-
-Demo on my [Twitter](https://twitter.com/willdphan/status/1660381395947077633?s=20)
+Demo on my [Twitter](https://twitter.com/willdphan/status/1661181075064778752?s=20)
 
 ## License
 
