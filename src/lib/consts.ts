@@ -1,1 +1,1 @@
-export const APP_NAME = 'Degen'
+export const APP_NAME = 'BW ScaleAI'
