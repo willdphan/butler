@@ -8,7 +8,7 @@ import Noise from 'public/images/noise.gif'
 import Menu from 'src/components/Menu'
 
 const Home: FC = () => {
-	const Services = ['Government AI', 'Automotive AI', 'Generative AI']
+	const Services = ['Automotive AI', 'Government AI', 'Generative AI']
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [currentText, setCurrentText] = useState('')
 
@@ -53,7 +53,7 @@ const Home: FC = () => {
 							With Your Data
 						</h1>
 
-						<h3 className="text-md   md:text-lg max-w-[40em] leading-[1.75em] font-Sans">
+						<h3 className="text-md md:text-lg max-w-[40em] leading-[1.75em] font-Sans">
 							Make the best models with the best data. Scale Data Engine leverages your enterprise data,
 							and with Scale Generative AI Platform, safely unlocks the value of AI.
 						</h3>
